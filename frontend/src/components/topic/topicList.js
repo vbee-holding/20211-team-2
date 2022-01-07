@@ -23,7 +23,7 @@ const TopicList = () => {
     
    }
    const updateTopic = (id) =>{
-    const newTopic = prompt("Nhập tên chuyên mục: ");
+    const newTopic = prompt("Nhập tên chuyên mục muốn thay đổi: ");
     axios.put("http://localhost:3000/updatetopic", {
       id: id,
       newTopic: newTopic
@@ -54,38 +54,39 @@ const TopicList = () => {
                         <button class="btn btn-primary" onClick={addToList}>Thêm</button>
                     </div> 
               <h4 >Danh sách các chuyên mục</h4>
-              <div class="row row-cols-1 row-cols-md-4 g-4 ">     
-                      { 
-                        
+               <div>   
+              <div class="admin-subcontent table-responsive">
+                    <table class="table table-striped table-sm" id="table-xe">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Tên chuyên mục</th>                                           
+                                <th scope="col">Action</th>           
+                            </tr>
+                        </thead>
+                        <tbody> 
+                      {                      
                         topicList.map((val, key) => {
-                          return(
-                            
-                          <div class="col">
-                          <div key={key} class="card text-dark bg-light mb-3 shadow " id='the'>
-                          <div class="card-header header-dark">{val.topicName}</div>
-                          <div class="card-body">
-                          
-                          <a class="btn btn-danger" href='/' onClick={() => deleteTopic(val._id)}  type="button" ><i class="fa fa-trash"></i></a>
-                          <a>  </a>
-                          <a class="btn btn-primary"   onClick={() => updateTopic(val._id)} type="button"  ><i class="fa fa-pencil"></i> </a>
-                          
-                          </div>
-                          </div>
-                          </div>
+                          return(  
+                                  <tr>
+                                      <td>{key+1}</td>
+                                      <td >{val.topicName}</td>
+                                      <td><a class="btn btn-primary"   onClick={() => updateTopic(val._id)} type="button"  ><i class="fa fa-pencil"></i> </a>
+                                      <a>  </a>                           
+                                      <a class="btn btn-danger"  onClick={() => deleteTopic(val._id)}  type="button" ><i class="fa fa-trash"></i></a></td>          
+                                  </tr>
                           )
-                          }
-                          
-                        )
+                        } 
+                      )
                       }
-                      
-                </div>
+                           
+                        </tbody>
+                    </table>
+                                
               </div>
-              
-                </div>
-                
-               
-                
-           
+              </div>
+              </div>
+              </div>
         )
         
     }
