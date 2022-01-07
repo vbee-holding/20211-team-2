@@ -1,22 +1,27 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'font-awesome/css/font-awesome.min.css';
-import { BrowserRouter as Router, Route} from "react-router-dom";
-
+import { BrowserRouter as Router, Route,Switch, Routes} from "react-router-dom";
 import Navbar from "./components/navbar.component"
-//import ExercisesList from "./components/exercises-list.component";
-//import EditExercise from "./components/edit-exercise.component";
-//import CreateExercise from "./components/create-exercise.component";
-//import CreateUser from "./components/create-user.component";
+import SideBar from './components/sidebar.component';
+import TopicList from './components/topic/topicList'
+import NewsList from './components/news/news';
+import UserList from './components/user/user';
 
-function App() {
-  return (
-    <Router>
-      <div className="container">
-      <Navbar />
-      
-      </div>
-    </Router>
+function App(props) {
+  return (   
+      <> <SideBar />
+            <div className="App">
+              <Navbar/>
+                <Routes>
+                  <Route exact path="/" element={<TopicList />} />
+                  <Route exact path="/news" element={<NewsList />} />
+                  <Route exact path="/users" element={<UserList/>} />
+                </Routes>
+             </div>
+      </>
+  
+        
   );
 }
 
