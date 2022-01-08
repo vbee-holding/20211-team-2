@@ -38,9 +38,9 @@ app.put('/updatetopic', async (req, res)=>{
             updateTopic.topicName = newTopic;
             updateTopic.save();
             
-          });
-    } catch (err) {
-        console.log(err);
+          }).clone();
+   } catch (err) {
+        console.log(err)
     }
 })
 app.delete('/delete/:id', async (req, res) => {

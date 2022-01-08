@@ -7,7 +7,7 @@ import SideBar from './components/sidebar.component';
 import TopicList from './components/topic/topicList'
 import NewsList from './components/news/news';
 import UserList from './components/user/user';
-
+import Static from './components/static/static';
 function App(props) {
   return (   
       <> <SideBar />
@@ -17,6 +17,7 @@ function App(props) {
                   <Route exact path="/" element={<TopicList />} />
                   <Route exact path="/news" element={<NewsList />} />
                   <Route exact path="/users" element={<UserList/>} />
+                  <Route exact path="/static" element={<Static/>} />
                 </Routes>
              </div>
       </>

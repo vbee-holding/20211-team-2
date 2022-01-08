@@ -26,11 +26,3 @@ h4{
 #the{
     max-width: 18rem
 }
-i{
-    animation-iteration-count: infinite;
-}
-      
-@keyframes example {
-    from {background-color: rgb(19, 134, 228);}
-    to {background-color: rgb(223, 58, 17);}
-}

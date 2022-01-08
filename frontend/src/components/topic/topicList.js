@@ -7,21 +7,21 @@ import { useNavigate } from "react-router-dom";
 const TopicList = () => {
   const [topicName, settopicName] = useState("");
   const [topicList, settopicList] = useState([])
-  //const [newTopic, setnewTopic] = useState("");
-  let navigate = useNavigate()
-
+  
+  //set state
   useEffect(() =>{
-    axios.get('http://localhost:3000/topiclist').then((response)=>{
-        settopicList(response.data)
-    })
-  },[])
-   
+    axios.get('http://localhost:3000/topicList').then((response)=>{
+      settopicList(response.data);
+  })
+  },[topicList])
+  //add a new topic
    const addToList = () =>{
      console.log(topicName)
      axios.post('http://localhost:3000/topic',{topicName: topicName});
      settopicList([...topicList,{topicName: topicName} ])
     
    }
+   //Update topic
    const updateTopic = (id) =>{
     const newTopic = prompt("Nhập tên chuyên mục muốn thay đổi: ");
     axios.put("http://localhost:3000/updatetopic", {
@@ -35,26 +35,27 @@ const TopicList = () => {
       );
     });
 
-     
+   
  
    }
-   const deleteTopic = (id) =>{
-      axios.delete(`http://localhost:3000/delete/${id}`);
+   //Delete topic
+   const deleteTopic = async (id) =>{
+     await axios.delete(`http://localhost:3000/delete/${id}`);
       
    }
 
-
+   //UI
         return (
             <div className="container">
             <div className="py-4" >
             <h4 >Điền form dưới đây để thêm chuyên mục</h4>
                     <div class="input-group flex-nowrap shadow"id='them' >
-                        <span class="input-group-text" id="addon-wrapping">Tên chuyên mục</span>
-                        <input type="text" onChange={(event) =>(settopicName(event.target.value))} class="form-control" placeholder="Tên chuyên mục muốn thêm" aria-label="Username" aria-describedby="addon-wrapping"/>
-                        <button class="btn btn-primary" onClick={addToList}>Thêm</button>
+                          <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
+                          <input type="email" class="form-control" onChange={(event) =>(settopicName(event.target.value))}  placeholder="Nhập tên chuyên mục muốn thêm "/>
+                          <button class="btn btn-primary" onClick={addToList}>Thêm</button>
                     </div> 
-              <h4 >Danh sách các chuyên mục</h4>
-               <div>   
+            <h4 >Danh sách các chuyên mục</h4>
+              <div>   
               <div class="admin-subcontent table-responsive">
                     <table class="table table-striped table-sm" id="table-xe">
                         <thead>
@@ -78,16 +79,14 @@ const TopicList = () => {
                           )
                         } 
                       )
-                      }
-                           
+                      }                       
                         </tbody>
-                    </table>
-                                
+                    </table>                               
               </div>
               </div>
               </div>
               </div>
         )
-        
+       
     }
 export default TopicList;
