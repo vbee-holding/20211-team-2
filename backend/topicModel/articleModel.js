@@ -25,5 +25,5 @@ const articleSchema = new mongoose.Schema({
         type: Date
     }  
 });
+
 export const articleModel = mongoose.model('articalModel', articleSchema)
-//module.exports = mongoose.model('Article', articleSchema);

@@ -32,6 +32,7 @@ const Crawl = () => {
         },[article])
         
           const crawlNews = () =>{
+            
             /*request(
               "https://dantri.com.vn/xa-hoi/chinh-tri.htm",
               (error, response, html) => {

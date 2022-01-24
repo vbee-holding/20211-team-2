@@ -22,8 +22,7 @@ const Categories = () => {
    
     
    }
-   //Update topic
-  //Update topic
+   
   const updateCategory = (id) =>{
     const newCategory = prompt("Nhập tên chuyên mục muốn thay đổi: ");
     axios.put("http://localhost:3000/updatecategory", {
