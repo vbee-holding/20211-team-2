@@ -5,8 +5,8 @@ let src, u, c;
 
 
 
-//function crawl() {    
-        
+function crawl(src) {    
+        if(src == 'vnexpress'){
         request('https://vnexpress.net/thoi-su/chinh-tri', (error, response, html) => {
         if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
@@ -28,22 +28,22 @@ let src, u, c;
         else {
           console.log(error);
         }
-        });
-        /*if(src = 'vietnamnet'){
-          request("https://vietnamnet.vn/", (error, response, html) => {
+        });}
+        if(src == 'khoa hoc tv'){
+          request("https://khoahoc.tv/vu-tru", (error, response, html) => {
           if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
           let data = [];let date = new Date()
-          $(".ShowCate1").each((index, el) => {
-          let link_item = $(el).find(".top-one a").attr("href");
-          let title = $(el).find(".top-one a").attr("title");
-          let thumbnail = $(el).find(".top-one a img").attr("src");
-          let sapo = 'Click để xem báo trên vietnamnet'
-          let source = src
-          let category = c;
+          $(".listview").each((index, el) => {
+          let link_item = $(el).find(".listitem clearfix .title a").attr("href");
+          let title = $(el).find(".listitem clearfix a").text();
+          let thumbnail = $(el).find(".listitem clearfix .thumb img").attr('src');
+          let sapo = $(el).find(".listitem clearfix .decs").text();
+          let source = 'khoa hoc tv'
+          let category = 'Khoa học - công nghệ';
           let time = date
           data.push({
-            link: "https://vietnamnet.vn/" + link_item,
+            link: link_item,
             title: title,
             thumbnail: thumbnail,
             sapo: sapo,
@@ -62,7 +62,7 @@ let src, u, c;
           }
           }
           );
-          }*/
-      //}
+          }
+      }
       
 //crawl()
