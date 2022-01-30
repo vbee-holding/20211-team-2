@@ -6,7 +6,7 @@ const Static = () => {
         return (
             <div className="container">
             <div className="py-4" >
-              <h4 >Thống kê cho Báo mới</h4>
+              <h4 class = "text-success">Thống kê cho Báo mới</h4>
               <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">

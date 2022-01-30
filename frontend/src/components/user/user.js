@@ -6,7 +6,7 @@ const UserList = () => {
         return (
             <div className="container">
             <div className="py-4" >
-              <h4 >Danh sách người đăng ký</h4>
+              <h4 class = "text-success">Danh sách người đăng ký</h4>
               <div>   
               <div class="admin-subcontent table-responsive">
                     <table class="table table-striped table-sm" id="table-xe">

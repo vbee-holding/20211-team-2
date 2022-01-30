@@ -2,41 +2,45 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import  {TopicModel}  from "./topicModel/topicModel.js"
+import  {CategoriesModel}  from "./topicModel/categoriesModel.js";
+import { articleModel } from './topicModel/articleModel.js';
+import  mongodb  from "mongodb";
+import cheerio from 'cheerio';
+import request from 'request-promise';
 
-//import router from './routes/topic.js'
 
 const app = express();
 app.use(express.json())
 app.use(cors())
 //Topic API
-app.post('/topic',async (req, res) => {
-    const topicName = req.body.topicName;
+app.post('/category',async (req, res) => {
+    const category = req.body.category;
    
-    const newTopic = new TopicModel({topicName: topicName})
+    const newCategory = new CategoriesModel({category: category})
 
     try {
-        await newTopic.save();
-        res.status(201).json(newTopic)
+        await newCategory.save();
+        res.status(201).json(newCategory)
     } catch (error) {
         res.status(409).json({message: error.message})
     }
 });
-app.get('/topiclist',async (req, res) => {
-    TopicModel.find({}, (err, result)=>{
+app.get('/categories',async (req, res) => {
+    CategoriesModel.find({}, (err, result)=>{
         if(err){
             res.send(err)
         }
         res.send(result);
     })
 });
-app.put('/updatetopic', async (req, res)=>{
-    const newTopic = req.body.newTopic;
+
+app.put('/updatecategory', async (req, res)=>{
+    const newCategory = req.body.newCategory;
     const id = req.body.id;
     try {
-        await TopicModel.findById(id, (err, updateTopic) => {
-            updateTopic.topicName = newTopic;
-            updateTopic.save();
+        await CategoriesModel.findById(id, (err, updateCategory) => {
+            updateCategory.category = newCategory;
+            updateCategory.save();
             
           }).clone();
    } catch (err) {
@@ -45,7 +49,7 @@ app.put('/updatetopic', async (req, res)=>{
 })
 app.delete('/delete/:id', async (req, res) => {
     const id = req.params.id;
-    await TopicModel.findByIdAndDelete(id).exec();
+    await CategoriesModel.findByIdAndDelete(id).exec();
     res.send("delete");
     
 })
@@ -62,4 +66,60 @@ const PORT = process.env.PORT || 3000
 mongoose.connect(CONNECTION_URL,{useNewUrlParser: true, useUnifiedTopology: true} )
 .then(() => app.listen(PORT, ()=> console.log(`Sever running on ${PORT}`)))
 .catch((error) => console.log(error.message));
-//mongoose.set('useFindAndModify', false);
+
+
+app.post('/article', async (req, res) => {
+    
+    try {
+        const newArticle = req.body;
+        const article = new articleModel(newArticle)
+        await article.save();
+        res.status(201).json(article);
+                
+    } catch (error) {
+        res.status(409).json({message: error.message})
+    }
+});
+app.get('/article', async(req, res) => {
+    try {
+        const article = await articleModel.find();
+        res.status(200).json(article);
+      } catch (err) {
+        res.status(500).json({ error: err });
+      }
+} )
+app.get('/article/:id', async(req, res)=>{
+    const id  = req.params.id;
+    try {
+        const article = await articleModel.findById(id);
+        console.log(article)
+        res.status(200).json(article);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+})
+
+app.put('/updateArticle/:id', async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const modifiedArticle = req.body;
+        console.log(modifiedArticle)
+        await articleModel.updateOne({ _id: id }, { $set: modifiedArticle });
+        res.json({
+            success: true,
+            data: modifiedArticle
+        })
+    } catch (err) {
+        res.json({
+            success: false,
+            message: "Failed to modified student"
+        });
+    }
+})
+app.delete('/deleteArticle/:id', async (req, res) => {
+    const id = req.params.id;
+    await articleModel.findByIdAndDelete(id).exec();
+    res.send("delete");
+})
+
+

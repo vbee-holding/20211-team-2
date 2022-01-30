@@ -9,6 +9,7 @@ import NewsList from './components/news/news';
 import UserList from './components/user/user';
 import Static from './components/static/static';
 import Crawl from './components/crawl/crawl';
+import Article from './components/news/viewarticle';
 function App(props) {
   return (   
       <> <SideBar />
@@ -17,6 +18,7 @@ function App(props) {
                 <Routes>
                   <Route exact path="/" element={<Categories />} />
                   <Route exact path="/news" element={<NewsList />} />
+                  <Route exact path='/article/:id' element={<Article />} />
                   <Route exact path="/users" element={<UserList/>} />
                   <Route exact path="/crawl" element={<Crawl/>} />
                   <Route exact path="/static" element={<Static/>} />

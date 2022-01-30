@@ -14,23 +14,17 @@ th, td {
     text-align: center;
 }
 h4{
-    margin-top: 0.5cm;
-}
-#them{
-    margin-top: 0.5cm;
-}
-#edit{
-    display:none;
-    
-}
-#the{
-    max-width: 18rem
-}
+    margin-top: 0.5cm}
+   
 i{
     animation-iteration-count: infinite;
 }
-      
-@keyframes example {
-    from {background-color: rgb(19, 134, 228);}
-    to {background-color: rgb(223, 58, 17);}
+#save{
+    margin-left: 45%;
+}
+textarea{
+    height: 100px;
+}   
+button{
+    margin-left: 45%;
 }

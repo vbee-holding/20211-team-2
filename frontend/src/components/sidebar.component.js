@@ -17,34 +17,39 @@ export default class Navbar extends Component {
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-light" href="/">
+                            <a class="nav-link active" aria-current="page" href="/admin">
+                              <span class="icon"></span> 
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <Link to={"/"} class="nav-link text-light">
                               <span class="icon"><i class="fa fa-file-text " aria-hidden="true"></i>  </span>
                               Quản lý chuyên mục
-                            </a>
+                            </Link>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-light" href="/news">
+                            <Link to={"/news"} class="nav-link text-light" >
                               <span class="icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i>  </span>
                               Các bài báo
-                            </a>
+                            </Link>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-light" href="crawl">
+                            <Link to={'/crawl'} class="nav-link text-light">
                               <span class="icon"><i class="fa fa-database" aria-hidden="true"></i>  </span>
                               Crawl 
-                            </a>
+                            </Link>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-light" href="/users">
+                            <Link to={'/users'} class="nav-link text-light" >
                               <span class="icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i>  </span>
                               Người đăng ký
-                            </a>
+                            </Link>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-light" href="/static">
+                            <Link to={'/static'} class="nav-link text-light">
                               <span class="icon"><i class="fa fa-bar-chart" aria-hidden="true"></i>  </span>
                               Thống kê
-                            </a>
+                            </Link>
                           </li>
                           
                         </ul>

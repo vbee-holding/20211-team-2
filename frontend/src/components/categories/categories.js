@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 const Categories = () => {
   const [category, setcategory] = useState("");
   const [categories, setcategories] = useState([])
-  
-  //set state
   useEffect(() =>{
     axios.get('http://localhost:3000/categories').then((response)=>{
       setcategories(response.data);
@@ -19,10 +17,7 @@ const Categories = () => {
      console.log(category)
      axios.post('http://localhost:3000/category',{category: category});
      setcategories([...categories,{category: category} ])
-   
-    
    }
-   
   const updateCategory = (id) =>{
     const newCategory = prompt("Nhập tên chuyên mục muốn thay đổi: ");
     axios.put("http://localhost:3000/updatecategory", {
@@ -35,27 +30,22 @@ const Categories = () => {
         })
       );
     });
-
-   
- 
    }
    //Delete topic
    const deleteCategory = async (id) =>{
-     await axios.delete(`http://localhost:3000/delete/${id}`);
-      
+     await axios.delete(`http://localhost:3000/delete/${id}`);    
    }
-
    //UI
         return (
             <div className="container">
             <div className="py-4" >
-            <h4 >Điền form dưới đây để thêm chuyên mục</h4>
+            <h4 class = "text-success">Điền form dưới đây để thêm chuyên mục</h4>
                     <div class="input-group flex-nowrap shadow"id='them' >
                           <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
                           <input type="email" class="form-control" onChange={(event) =>(setcategory(event.target.value))}  placeholder="Nhập tên chuyên mục muốn thêm "/>
                           <button class="btn btn-primary" onClick={addCategory}>Thêm</button>
                     </div> 
-            <h4 >Danh sách các chuyên mục</h4>
+            <h4 class = "text-success">Danh sách các chuyên mục</h4>
               <div>   
               <div class="admin-subcontent table-responsive">
                     <table class="table table-striped table-sm" id="table-xe">
@@ -73,9 +63,9 @@ const Categories = () => {
                                   <tr>
                                       <td>{key+1}</td>
                                       <td >{val.category}</td>
-                                      <td><a class="btn btn-primary"   onClick={() => updateCategory(val._id)} type="button"  ><i class="fa fa-pencil"></i> </a>
+                                      <td><a class="btn btn-primary" onClick={() => updateCategory(val._id)} type="button"  ><i class="fa fa-pencil"></i> </a>
                                       <a>  </a>                           
-                                      <a class="btn btn-danger"  onClick={() => deleteCategory(val._id)}  type="button" ><i class="fa fa-trash"></i></a></td>          
+                                      <a class="btn btn-danger" onClick={() => deleteCategory(val._id)}  type="button" ><i class="fa fa-trash"></i></a></td>          
                                   </tr>
                           )
                         } 
