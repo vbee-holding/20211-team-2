@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import './news.css';
+import './article.css';
 import axios from 'axios';
 import { Link, Route, Routes, useParams } from 'react-router-dom';
 
