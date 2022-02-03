@@ -1,8 +1,9 @@
 import cheerio from 'cheerio';
 import axios from 'axios';
 import request from 'request-promise';
+import Request  from 'express'
 let src, u, c;
-
+//let url = Request.Form("url")
 
 
 function crawl(src) {    
@@ -43,7 +44,7 @@ function crawl(src) {
           let category = 'Khoa học - công nghệ';
           let time = date
           data.push({
-            link: link_item,
+            link: "https://khoahoc.tv/vu-tru"+link_item,
             title: title,
             thumbnail: thumbnail,
             sapo: sapo,
@@ -66,3 +67,4 @@ function crawl(src) {
       }
       
 //crawl()
+export default crawl
