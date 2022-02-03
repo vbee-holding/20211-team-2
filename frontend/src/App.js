@@ -10,6 +10,7 @@ import UserList from './components/user/user';
 import Static from './components/static/static';
 import Crawl from './components/crawl/crawl';
 import Article from './components/article/viewarticle';
+import UpdateUrl from './components/static/updateUrl';
 function App(props) {
   return (   
       <> <SideBar />
@@ -22,6 +23,7 @@ function App(props) {
                   <Route exact path="/users" element={<UserList/>} />
                   <Route exact path="/crawl" element={<Crawl/>} />
                   <Route exact path="/static" element={<Static/>} />
+                  <Route exact path='/url/:id' element={<UpdateUrl />} />
                 </Routes>
              </div>
       </>

@@ -6,11 +6,17 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery'; 
 
 const Crawl = () => {
-    const [source, setsource] = useState('')
-    const [url, seturl] = useState('')
-    const [category, setcategory] = useState('')
-    const [article, setarticle] = useState([])
-    const [categories, setcategories] = useState([])
+    const [source, setsource] = useState('');
+    const [url, seturl] = useState('');
+    const [category, setcategory] = useState('');
+    const [article, setarticle] = useState([]);
+    const [categories, setcategories] = useState([]);
+    const [list, setlist] = useState([]);
+  useEffect(() =>{
+    axios.get('http://localhost:3000/url').then((response)=>{
+    setlist(response.data);
+  })
+  },[list])
     //set state
     useEffect(() =>{
       axios.get('http://localhost:3000/categories').then((response)=>{
@@ -34,8 +40,8 @@ const Crawl = () => {
       },
       );
     }
-            return (
-            <div className="container">
+        return (
+          <div className="container">
             <div className="py-4" >         
               <h4 class = "text-success">Crawl các bài báo</h4>             
               <div class="container">
@@ -56,21 +62,36 @@ const Crawl = () => {
                 </select>
                     <label>Nguồn báo</label>
                     <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(setsource(event.target.value))}>                                
-                      <option>vnexpress</option>
-                      <option>https://vietnamnet.vn/</option>
-                      <option>Bao Nhan Dan</option>
-                      <option>https://khoahoc.tv/</option>
-                </select>
+                      <option value='vnexpress'>vnexpress</option>  
+                      <option value='khoa hoc tv'>Khoa hoc tv</option>
+                    </select>
                 <label>Nhập url</label>
-                <input class = "form-control" onChange={(event) =>(seturl(event.target.value))}></input>
+                <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(seturl(event.target.value))}>                
+                {                      
+                        list.filter(x => x.source == source).map((val, key) =>
+                         {
+                          return(  
+                            <option value={val.url} >{val.url}</option>
+                          )
+                        } 
+                      )
+                } 
+                </select>
+                
                 </div>
-                <Link to = {'/crawl'} type="submit" id='crawl' name="submit" onClick={CrawlNews}  class="btn btn-primary" >crawl</Link>
                 </form>
+                <Link to = {'/crawl'} type="submit" id='crawl' name="submit" onClick={CrawlNews}  class="btn btn-primary" >crawl</Link>
+                
+                        
+                    
+                </div>
+                
         </div>
     </div>
 </div>
+           
               </div>
-              </div>
+              
         )
 
  }

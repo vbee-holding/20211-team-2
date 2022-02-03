@@ -18,6 +18,10 @@ const Categories = () => {
      axios.post('http://localhost:3000/category',{category: category});
      setcategories([...categories,{category: category} ])
    }
+   const onInputChange = event => {
+    const { value, name } = event.target
+    setcategory({ ...category, [name]: value })
+};
   const updateCategory = (id) =>{
     const newCategory = prompt("Nhập tên chuyên mục muốn thay đổi: ");
     axios.put("http://localhost:3000/updatecategory", {
@@ -42,7 +46,7 @@ const Categories = () => {
             <h4 class = "text-success">Điền form dưới đây để thêm chuyên mục</h4>
                     <div class="input-group flex-nowrap shadow"id='them' >
                           <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
-                          <input type="email" class="form-control" onChange={(event) =>(setcategory(event.target.value))}  placeholder="Nhập tên chuyên mục muốn thêm "/>
+                          <input class="form-control" name='category' onChange={onInputChange}  placeholder="Nhập tên chuyên mục muốn thêm "/>
                           <button class="btn btn-primary" onClick={addCategory}>Thêm</button>
                     </div> 
             <h4 class = "text-success">Danh sách các chuyên mục</h4>
