@@ -1,29 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const articleSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    link: {
-        type: String,
-        required: true
-    },
-    thumbnail: {
-        type: String
-    },
-    sapo: {
-        type: String
-    },
-    source: {
-        type: String
-    },
-    categories: {
-        type: String
-    },
-    time: {
-        type: Date
-    }  
+    title: { type: String },
+    link: { type: String },
+    thumbnail: { type: String },
+    sapo: { type: String },
+    category: { type: String },
+    source: { type: String },
+    release_time: { type: Date }
 });
 
-module.exports = mongoose.model('Article', articleSchema);
+const article = mongoose.model('article', articleSchema);
+
+module.exports = article;
