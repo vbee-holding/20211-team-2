@@ -18,10 +18,50 @@ const categoryConvert = {
 
 const articleController = {};
 
+articleController.create = async (req, res, next) => {
+    try {
+        const {
+            title,
+            link,
+            thumbnail,
+            sapo,
+            category,
+            source,
+            release_time
+        } = req.body;
+
+        const newArticle = new ArticleModel({
+            title: title,
+            link: link,
+            thumbnail: thumbnail,
+            sapo: sapo,
+            category: category,
+            source: source,
+            release_time: release_time
+        });
+
+        try { 
+            const savedArticle = await newArticle.save();
+            res.status(httpStatus.CREATED).json({
+                data: newArticle
+            })
+        } catch (e) {
+            return res.status(httpStatus.BAD_REQUEST).json({
+                message: e.message
+            })
+        }
+
+    } catch (e) {
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            message: e.message
+        });
+    }
+}
+
 articleController.getListArticles = async (req, res, next) => {
     try {
         const amount = req.params.amount;
-        const listArticles = await ArticleModel.find().sort({release_time: -1})
+        const listArticles = await ArticleModel.find({}).sort({release_time: -1})
         return res.status(httpStatus.OK).json({
             data: listArticles.slice(0, amount)
         })
