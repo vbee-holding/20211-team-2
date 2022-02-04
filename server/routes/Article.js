@@ -1,21 +1,26 @@
 const articleController = require('../controllers/Article');
 const {asyncWrapper} = require("../utils/asyncWrapper");
 const express = require("express");
-const articlesRoutes = express.Router();
+const articleRoutes = express.Router();
 
-articlesRoutes.get(
+articleRoutes.post(
+    "/create",
+    asyncWrapper(articleController.create)
+)
+
+articleRoutes.get(
     "/getListArticles/:amount",
     asyncWrapper(articleController.getListArticles)
 )
 
-articlesRoutes.get(
-    "/getListArticles/:category",
+articleRoutes.get(
+    "/getArticlesByCategory/:category",
     asyncWrapper(articleController.getArticlesByCategory)
 )
 
-articlesRoutes.get(
+articleRoutes.get(
     "/getArticle/:id",
     asyncWrapper(articleController.getArticle)
 )
 
-module.exports = articlesRoutes
+module.exports = articleRoutes
