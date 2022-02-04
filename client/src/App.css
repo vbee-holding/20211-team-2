@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.align {
+  margin: 0 auto;
+  position: relative;
+  width: 82%;
+}
+
+
