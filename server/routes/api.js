@@ -1,11 +1,11 @@
 const express = require("express");
-const articlesRoutes = require('./Article');
+const articleRoutes = require('./Article');
 
 const apiRoutes = express.Router();
 
 apiRoutes.get(
     "/", (req, res) => res.json({ api: "is-working" })
 );
-apiRoutes.use('/articles', articlesRoutes);
+apiRoutes.use('/article', articleRoutes);
 
 module.exports = apiRoutes;
