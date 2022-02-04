@@ -32,7 +32,16 @@ app.get('/categories',async (req, res) => {
         res.send(result);
     })
 });
-
+app.get('/category/:id', async(req, res)=>{
+    const id  = req.params.id;
+    try {
+        const category = await CategoriesModel.findById(id);
+        console.log(category)
+        res.status(200).json(category);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+})
 app.put('/updatecategory', async (req, res)=>{
     const newCategory = req.body.newCategory;
     const id = req.body.id;

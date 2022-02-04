@@ -11,13 +11,17 @@ import Static from './components/static/static';
 import Crawl from './components/crawl/crawl';
 import Article from './components/article/viewarticle';
 import UpdateUrl from './components/static/updateUrl';
+import Home from './components/Home/home';
+import ArticleInC from './components/categories/article';
 function App(props) {
   return (   
       <> <SideBar />
             <div className="App">
               <Navbar/>
                 <Routes>
-                  <Route exact path="/" element={<Categories />} />
+                  <Route exact path="/" element={<Home />} />
+                  <Route exact path="/category" element={<Categories />} />
+                  <Route exact path="/category/:id" element={<ArticleInC />} />
                   <Route exact path="/news" element={<NewsList />} />
                   <Route exact path='/article/:id' element={<Article />} />
                   <Route exact path="/users" element={<UserList/>} />

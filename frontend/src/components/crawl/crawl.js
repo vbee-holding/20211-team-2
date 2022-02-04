@@ -50,7 +50,8 @@ const Crawl = () => {
                 <form method="POST" >
                 <div class="form-group">
                 <label>Chọn chuyên mục</label>
-                <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(setcategory(event.target.value))}>                
+                <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(setcategory(event.target.value))}>     
+                <option selected>Chuyên mục</option>               
                 {                      
                         categories.map((val, key) => {
                           return(  
@@ -61,12 +62,15 @@ const Crawl = () => {
                 } 
                 </select>
                     <label>Nguồn báo</label>
-                    <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(setsource(event.target.value))}>                                
+                    <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(setsource(event.target.value))}>  
+                    <option selected>Nguồn báo</option>                              
                       <option value='vnexpress'>vnexpress</option>  
                       <option value='khoa hoc tv'>Khoa hoc tv</option>
                     </select>
                 <label>Nhập url</label>
-                <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(seturl(event.target.value))}>                
+                  
+                <select class="custom-select custom-select-lg mb-3 form-control" onChange={(event) =>(seturl(event.target.value))}>  
+                <option selected>Chọn url</option>               
                 {                      
                         list.filter(x => x.source == source).map((val, key) =>
                          {

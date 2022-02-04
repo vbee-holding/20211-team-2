@@ -20,10 +20,11 @@ const Static = () => {
       return (
         <div className="container">
         <div className="py-4" >
-          <h4>Thêm URL</h4>
+          <h4 class = 'text-success'>Thêm URL</h4>
             <div class="card-body">
                     <form >
                         <select class="form-select mb-3" onChange={(event) => setsource(event.target.value)}>
+                        <option selected>Nguồn báo</option> 
                           <option value='vnexpress'>vnexpress</option>  
                           <option value='khoa hoc tv'>Khoa hoc tv</option>
                         </select>
@@ -31,7 +32,7 @@ const Static = () => {
                         <button type="submit" class="btn btn-primary" onClick={AddUrl}>Thêm </button>              
                     </form>
             </div>
-            <h4 class = "text-success">Danh sách các chuyên mục</h4>
+            <h4 class = "text-success mt-1">Danh sách các chuyên mục</h4>
               <div>   
               <div class="admin-subcontent table-responsive">
                     <table class="table table-striped table-sm" id="table-xe">

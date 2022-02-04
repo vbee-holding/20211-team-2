@@ -22,7 +22,12 @@ export default class Navbar extends Component {
                             </a>
                           </li>
                           <li class="nav-item">
-                            <Link to={"/"} class="nav-link text-light">
+                            <Link to={'/'} class="nav-link text-light"  >
+                              <span class="icon"><i class="fa fa-home" aria-hidden="true"></i></span> Trang chủ
+                            </Link>
+                          </li>
+                          <li class="nav-item">
+                            <Link to={"/category"} class="nav-link text-light">
                               <span class="icon"><i class="fa fa-file-text " aria-hidden="true"></i>  </span>
                               Quản lý chuyên mục
                             </Link>
@@ -47,8 +52,8 @@ export default class Navbar extends Component {
                           </li>
                           <li class="nav-item">
                             <Link to={'/static'} class="nav-link text-light">
-                              <span class="icon"><i class="fa fa-bar-chart" aria-hidden="true"></i>  </span>
-                              Thống kê
+                              <span class="icon"><i class="fa fa-mouse-pointer" aria-hidden="true"></i> </span>
+                              Quản lý nguồn
                             </Link>
                           </li>
                           

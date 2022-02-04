@@ -18,32 +18,30 @@ const NewsList = () => {
             <div className="container">
             <div className="py-4" >         
               <h4 class = "text-success">Danh sách các bài báo</h4>
-              <div class="admin-subcontent table-responsive">
-                    <table class="table table-striped table-sm" id="table-xe">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Tên bài báo</th>                                            
-                                <th scope="col">Action</th>   
-                            </tr>
-                        </thead>
-                        <tbody> 
+              <div class="row row-cols-1 row-cols-md-4 g-4">
+                    
                       {                      
                         articles.map((val, key) => {
                           return(  
-                                  <tr>
-                                      <td>{key+1}</td>
-                                      <td>{val.title}</td>    
-                                      <td><Link to={`/article/${val._id}`}class="btn btn-primary" type="button"  >Xem </Link>
-                                      <a>  </a><a class="btn btn-danger" onClick={() => deleteArticle(val._id)}   type="button" ><i class="fa fa-trash"></i></a></td>
-                                                 
-                                  </tr>
+                            <div class="card shadow" id='article'>
+                              <img id='thumbnail' src={val.thumbnail} class="card-img-top shadow mt-3" />
+                              <div class="card-body" >
+                              <h8 class="card-title">{val.title}</h8>
+                              
+                              </div>
+                              <div class ='btn-group'>
+                              <Link to = {`/article/${val._id}`} class="btn btn-primary mb-1" id='xem'>Xem chi tiết</Link>
+                              <a>  </a><a class="btn btn-danger" onClick={() => deleteArticle(val._id)} id='xoa'  type="button" >Xóa</a>
+                              </div>
+                               <a href={val.link} target="_blank"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Xem bài báo gốc</a>
+                            </div>
+
                           )
                         } 
                       )
                       }                       
-                        </tbody>
-                    </table>                               
+                      
+                                            
               </div>
               </div>
               </div>

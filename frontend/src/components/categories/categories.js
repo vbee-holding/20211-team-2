@@ -46,7 +46,7 @@ const Categories = () => {
             <h4 class = "text-success">Điền form dưới đây để thêm chuyên mục</h4>
                     <div class="input-group flex-nowrap shadow"id='them' >
                           <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
-                          <input class="form-control" name='category' onChange={onInputChange}  placeholder="Nhập tên chuyên mục muốn thêm "/>
+                          <input class="form-control" onChange={(event) => setcategory(event.target.value)}  placeholder="Nhập tên chuyên mục muốn thêm "/>
                           <button class="btn btn-primary" onClick={addCategory}>Thêm</button>
                     </div> 
             <h4 class = "text-success">Danh sách các chuyên mục</h4>
@@ -56,7 +56,8 @@ const Categories = () => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Tên chuyên mục</th>                                           
+                                <th scope="col">Tên chuyên mục</th>
+                                <th scope="col">Các bài báo</th>                                           
                                 <th scope="col">Action</th>           
                             </tr>
                         </thead>
@@ -67,6 +68,7 @@ const Categories = () => {
                                   <tr>
                                       <td>{key+1}</td>
                                       <td >{val.category}</td>
+                                      <td><Link to={`/category/${val._id}`} class='btn btn-primary'>Xem</Link></td>
                                       <td><a class="btn btn-primary" onClick={() => updateCategory(val._id)} type="button"  ><i class="fa fa-pencil"></i> </a>
                                       <a>  </a>                           
                                       <a class="btn btn-danger" onClick={() => deleteCategory(val._id)}  type="button" ><i class="fa fa-trash"></i></a></td>          
