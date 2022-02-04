@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const {PORT, HOST, MONGO_URI} = require("./constants/constants");
+const mainRouter = require('./routes');
 
 // connect to mongodb
 mongoose.connect(MONGO_URI, {
@@ -16,14 +17,14 @@ mongoose.connect(MONGO_URI, {
         console.log(err);
     })
 
-// use middleware to parse body req to json
+const app = express();
+
 app.use(express.json());
-
-// use middleware to enable cors
 app.use(cors());
-app.use(bodyParser.json({limit: "50mb"}));
-app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
-app.listen(PORT, HOST, () => {
-    console.log("server start - " + PORT);
-})
+app.use(mainRouter);
+app.use('/uploads', express.static('uploads'));
+
+const server = app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
+); 
