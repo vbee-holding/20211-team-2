@@ -23,7 +23,7 @@ articleController.getListArticles = async (req, res, next) => {
         const amount = req.params.amount;
         const listArticles = await ArticleModel.find().sort({release_time: -1})
         return res.status(httpStatus.OK).json({
-            data: listArticles[:amount]
+            data: listArticles.slice(0, amount)
         })
     } catch (e) {
         return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
