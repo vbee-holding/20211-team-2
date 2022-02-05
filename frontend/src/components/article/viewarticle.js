@@ -55,7 +55,7 @@ const Article  = () => {
                 <label for="floatingInput">Category</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name='time' onChange={onInputChange} value={article.time}/>
+                <input type="text" class="form-control" id="floatingInput" name='time' onChange={onInputChange} value={article.release_time}/>
                 <label for="floatingInput">Time</label>
             </div>
             <button class="btn btn-primary" onClick={updateArticle(article._id,article)}>Lưu thay đổi</button>

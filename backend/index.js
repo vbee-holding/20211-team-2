@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import  {CategoriesModel}  from "./Model/categoriesModel.js";
-import { articleModel } from './Model/articleModel.js';
+import {article} from './Model/articleModel.js';
 import  mongodb  from "mongodb";
 import cheerio from 'cheerio';
 import request from 'request-promise';
@@ -68,7 +68,7 @@ app.use(bodyParser.json({limit: "30mb", extended:true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended:true}))
 
 
-const CONNECTION_URL = 'mongodb+srv://lathiha:20194266@cluster0.nq5m6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const CONNECTION_URL = 'mongodb+srv://project:20211@cluster0.bdcg1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 3000
 
 mongoose.connect(CONNECTION_URL,{useNewUrlParser: true, useUnifiedTopology: true} )
@@ -80,7 +80,7 @@ app.post('/article', async (req, res) => {
     
     try {
         const newArticle = req.body;
-        const article = new articleModel(newArticle)
+        const article = new article(newArticle)
         await article.save();
         res.status(201).json(article);
                 
@@ -90,7 +90,7 @@ app.post('/article', async (req, res) => {
 });
 app.get('/article', async(req, res) => {
     try {
-        const article = await articleModel.find();
+        const article = await article.find();
         res.status(200).json(article);
       } catch (err) {
         res.status(500).json({ error: err });
@@ -99,7 +99,7 @@ app.get('/article', async(req, res) => {
 app.get('/article/:id', async(req, res)=>{
     const id  = req.params.id;
     try {
-        const article = await articleModel.findById(id);
+        const article = await article.findById(id);
         console.log(article)
         res.status(200).json(article);
     } catch (error) {
@@ -112,7 +112,7 @@ app.put('/updateArticle/:id', async (req, res)=>{
         const id = req.params.id;
         const modifiedArticle = req.body;
         console.log(modifiedArticle)
-        await articleModel.updateOne({ _id: id }, { $set: modifiedArticle });
+        await article.updateOne({ _id: id }, { $set: modifiedArticle });
         res.json({
             success: true,
             data: modifiedArticle
@@ -126,7 +126,7 @@ app.put('/updateArticle/:id', async (req, res)=>{
 })
 app.delete('/deleteArticle/:id', async (req, res) => {
     const id = req.params.id;
-    await articleModel.findByIdAndDelete(id).exec();
+    await article.findByIdAndDelete(id).exec();
     res.send("delete");
 })
 
