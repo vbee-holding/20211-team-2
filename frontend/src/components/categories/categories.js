@@ -15,7 +15,7 @@ const Categories = () => {
   //add a new topic
    const addCategory = () =>{
      console.log(category)
-     axios.post('http://localhost:3000/category',{category: category});
+     axios.post('http://localhost:3000/categories',{category: category});
      setcategories([...categories,{category: category} ])
    }
    const onInputChange = event => {
@@ -44,11 +44,13 @@ const Categories = () => {
             <div className="container">
             <div className="py-4" >
             <h4 class = "text-success">Điền form dưới đây để thêm chuyên mục</h4>
-                    <div class="input-group flex-nowrap shadow"id='them' >
-                          <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
-                          <input class="form-control" onChange={(event) => setcategory(event.target.value)}  placeholder="Nhập tên chuyên mục muốn thêm "/>
-                          <button class="btn btn-primary" onClick={addCategory}>Thêm</button>
-                    </div> 
+            <form>
+                <div class="input-group flex-nowrap shadow" id='them' >
+                    <span class="input-group-text" id="addon-wrapping">Tên chuyên mục  </span>
+                    <input class="form-control" onChange={(event) => setcategory(event.target.value)}  placeholder="Nhập tên chuyên mục muốn thêm "/>
+                    <button class="btn btn-primary" onClick={addCategory}>Thêm</button>
+                </div> 
+            </form>
             <h4 class = "text-success">Danh sách các chuyên mục</h4>
               <div>   
               <div class="admin-subcontent table-responsive">

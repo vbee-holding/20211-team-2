@@ -27,7 +27,6 @@ const NewsList = () => {
                               <img id='thumbnail' src={val.thumbnail} class="card-img-top shadow mt-3" />
                               <div class="card-body" >
                               <h8 class="card-title">{val.title}</h8>
-                              
                               </div>
                               <div class ='btn-group'>
                               <Link to = {`/article/${val._id}`} class="btn btn-primary mb-1" id='xem'>Xem chi tiết</Link>
