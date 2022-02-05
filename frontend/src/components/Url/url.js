@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
-import './static.css';
+import './url.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const Static = () => {
+const Url = () => {
   const [source, setsource] = useState('');
   const [url, seturl] = useState('');
   const [list, setlist] = useState([]);
@@ -25,14 +25,17 @@ const Static = () => {
                     <form >
                         <select class="form-select mb-3" onChange={(event) => setsource(event.target.value)}>
                         <option selected>Nguồn báo</option> 
-                          <option value='vnexpress'>vnexpress</option>  
-                          <option value='khoa hoc tv'>Khoa hoc tv</option>
+                        <option value='Kienthuc.vn'>Kienthuc.vn</option>  
+                        <option value='Laodong.vn'>Laodong.vn</option>
+                        <option value='Vnexpress.vn'>Vnexpress</option>
+                        <option value='Nguoilambao.vn'>Nguoilambao.vn</option>
+                        <option value='Thanhnien.vn'>Thanhnien.vn</option>
                         </select>
                         <input type="text" class="form-control mb-3"  placeholder="Nhap url" onChange={(event) => seturl(event.target.value)} required/>  
                         <button type="submit" class="btn btn-primary" onClick={AddUrl}>Thêm </button>              
                     </form>
             </div>
-            <h4 class = "text-success mt-1">Danh sách các chuyên mục</h4>
+            <h4 class = "text-success mt-1">Danh sách nguồn </h4>
               <div>   
               <div class="admin-subcontent table-responsive">
                     <table class="table table-striped table-sm" id="table-xe">
@@ -68,4 +71,4 @@ const Static = () => {
         )
 
  }
- export default Static;
+ export default Url;

@@ -41,7 +41,7 @@ export default class Navbar extends Component {
                           <li class="nav-item">
                             <Link to={'/crawl'} class="nav-link text-light">
                               <span class="icon"><i class="fa fa-database" aria-hidden="true"></i>  </span>
-                              Crawl 
+                              Thu thập thủ công
                             </Link>
                           </li>
                           <li class="nav-item">

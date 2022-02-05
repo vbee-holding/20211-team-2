@@ -7,6 +7,7 @@ const articleSchema = new mongoose.Schema({
     sapo: { type: String },
     category: { type: String },
     source: { type: String },
+    status:{type: String},
     release_time: { type: Date }
 });
 

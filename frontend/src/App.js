@@ -7,10 +7,10 @@ import SideBar from './components/sidebar.component';
 import Categories from './components/categories/categories';
 import NewsList from './components/article/article';
 import UserList from './components/user/user';
-import Static from './components/static/static';
+import Url from './components/Url/url';
 import Crawl from './components/crawl/crawl';
 import Article from './components/article/viewarticle';
-import UpdateUrl from './components/static/updateUrl';
+import UpdateUrl from './components/Url/updateUrl';
 import Home from './components/Home/home';
 import ArticleInC from './components/categories/article';
 function App(props) {
@@ -26,7 +26,7 @@ function App(props) {
                   <Route exact path='/article/:id' element={<Article />} />
                   <Route exact path="/users" element={<UserList/>} />
                   <Route exact path="/crawl" element={<Crawl/>} />
-                  <Route exact path="/static" element={<Static/>} />
+                  <Route exact path="/static" element={<Url/>} />
                   <Route exact path='/url/:id' element={<UpdateUrl />} />
                 </Routes>
              </div>

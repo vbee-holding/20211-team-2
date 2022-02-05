@@ -26,7 +26,7 @@ const ArticleInC  = () => {
         return (
             <div className="container">
             <div className="py-4">
-            <Link to={'/'}><i class="fa fa-angle-double-left mt-3" aria-hidden="true"></i>Tất cả các chuyên mục</Link>
+            <Link to={'/category'}><i class="fa fa-angle-double-left mt-3" aria-hidden="true"></i>Tất cả các chuyên mục</Link>
             <h4 class = 'text-success mt-2'> Các bài báo thuộc chuyên mục {category.category}</h4>
             <br/>
             <div class="row row-cols-1 row-cols-md-4 g-4">     

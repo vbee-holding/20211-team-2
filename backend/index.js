@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 //Topic API
-app.post('/category',async (req, res) => {
+app.post('/categories',async (req, res) => {
     const category = req.body.category;   
     const newCategory = new CategoriesModel({category: category})
 
@@ -80,9 +80,10 @@ app.post('/article', async (req, res) => {
     
     try {
         const newArticle = req.body;
-        const article = new article(newArticle)
-        await article.save();
-        res.status(201).json(article);
+        const Article = new article(newArticle)
+        console.log(Article)
+        await Article.save();
+        res.status(201).json(Article);
                 
     } catch (error) {
         res.status(409).json({message: error.message})
@@ -90,8 +91,8 @@ app.post('/article', async (req, res) => {
 });
 app.get('/article', async(req, res) => {
     try {
-        const article = await article.find();
-        res.status(200).json(article);
+        const Article = await article.find();
+        res.status(200).json(Article);
       } catch (err) {
         res.status(500).json({ error: err });
       }
@@ -99,9 +100,9 @@ app.get('/article', async(req, res) => {
 app.get('/article/:id', async(req, res)=>{
     const id  = req.params.id;
     try {
-        const article = await article.findById(id);
-        console.log(article)
-        res.status(200).json(article);
+        const Article = await article.findById(id);
+        console.log(Article)
+        res.status(200).json(Article);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
@@ -120,7 +121,7 @@ app.put('/updateArticle/:id', async (req, res)=>{
     } catch (err) {
         res.json({
             success: false,
-            message: "Failed to modified student"
+            message: "Failed to modified"
         });
     }
 })
