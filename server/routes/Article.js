@@ -14,7 +14,7 @@ articleRoutes.post(
 )
 
 articleRoutes.get(
-    "/getListArticles/:amount",
+    "/getListArticles",
     asyncWrapper(articleController.getListArticles)
 )
 
