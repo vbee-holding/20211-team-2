@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
+import Search from './components/Search/Search';
 
 // Routes
 import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
@@ -17,7 +18,9 @@ function App() {
         <Header />
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/tim-kiem/:query" element={<Search/>} />
+
         </Routes>
         <Footer />
       </div>
