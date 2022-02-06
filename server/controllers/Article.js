@@ -58,6 +58,27 @@ articleController.create = async (req, res, next) => {
     }
 }
 
+articleController.search = async (req, res, next) => {
+    try {
+        const {
+            query
+        } = req.body;
+
+        const results = await ArticleModel.find({
+            $or: [ { "title": new RegExp(query, "i") }, { "sapo": new RegExp(query, "i") } ]
+        }).sort({release_time: -1})
+
+        return res.status(httpStatus.OK).json({
+            data: results
+        })
+
+    } catch (e) {
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            message: e.message
+        });
+    }
+}
+
 articleController.getListArticles = async (req, res, next) => {
     try {
         const amount = req.params.amount;
