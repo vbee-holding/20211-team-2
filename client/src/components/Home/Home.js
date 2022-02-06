@@ -34,7 +34,7 @@ export default function Home() {
 
         try {
             const getThoiSuList = async () => {
-                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/thoi-su', {
+                const response = await fetch(API_URL + '/api/articles/getArticlesByCategory/thoi-su', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -52,7 +52,7 @@ export default function Home() {
 
         try {
             const getKinhTeList = async () => {
-                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/kinh-te', {
+                const response = await fetch(API_URL + '/api/articles/getArticlesByCategory/kinh-te', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -70,7 +70,7 @@ export default function Home() {
 
         try {
             const getTheThaoList = async () => {
-                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/the-thao', {
+                const response = await fetch(API_URL + '/api/articles/getArticlesByCategory/the-thao', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -88,7 +88,7 @@ export default function Home() {
 
         try {
             const getGiaiTriList = async () => {
-                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/giai-tri', {
+                const response = await fetch(API_URL + '/api/articles/getArticlesByCategory/giai-tri', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
