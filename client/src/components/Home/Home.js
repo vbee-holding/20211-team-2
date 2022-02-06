@@ -134,7 +134,6 @@ export default function Home() {
                             </article>
                         </div>
                         <div className="feature">
-
                             <article className="story story-primary">
                                 <a className="story-thumb" href={articlesList[1].link}>
                                     <img src={articlesList[1].thumbnail} alt=""/>
@@ -212,7 +211,7 @@ export default function Home() {
                             Tin tức theo chủ đề
                         </div>
                         <div className="zone-timeline">
-                        
+
                         </div>
 
 
