@@ -34,6 +34,7 @@ header > div {
 }
 
 .search-button {
+  cursor: pointer;
   width: 100px;
   height: 30px;
   border: none;
