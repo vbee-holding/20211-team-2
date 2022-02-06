@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <div id="search-bar">
-        <div class="align">
+        <div className="align">
           <a href="/" className="logo-top"></a>
           <form action="" className="form">
             <input
