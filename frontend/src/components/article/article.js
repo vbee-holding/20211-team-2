@@ -4,12 +4,17 @@ import axios from 'axios';
 import { Link, Route, Routes, useParams } from 'react-router-dom';
 
 const NewsList = () => {
-        const [articles, setarticles] = useState([])
-        useEffect(() =>{
-          axios.get('http://localhost:3000/article').then((response)=>{
-          setarticles(response.data.reverse());
-        })
-        },[articles])
+        const [articles, setarticles] = useState([]);
+        
+        useEffect(() => {
+          loadArticle();
+      }, []);
+      const loadArticle = async () => {
+        axios.get('http://localhost:3000/article').then((response)=>{
+        setarticles(response.data);
+      })
+    }
+    
         const deleteArticle = async (id) =>{
           await axios.delete(`http://localhost:3000/deleteArticle/${id}`);    
         }
@@ -38,9 +43,7 @@ const NewsList = () => {
                           )
                         } 
                       )
-                      }                       
-                      
-                                            
+                      }                                                   
               </div>
               </div>
               </div>
