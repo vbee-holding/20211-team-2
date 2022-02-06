@@ -92,6 +92,7 @@ app.post('/article', async (req, res) => {
 app.get('/article', async(req, res) => {
     try {
         const Article = await article.find();
+        console.log(Article)
         res.status(200).json(Article);
       } catch (err) {
         res.status(500).json({ error: err });

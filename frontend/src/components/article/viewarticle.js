@@ -5,7 +5,7 @@ import './article.css';
 import { Link, useParams } from "react-router-dom";
 
 const Article  = () => {
-        const [article, setarticle] = useState({link:'', title:'', thumbnail:'', sapo:'', source:'', category:'', time :'' })
+        const [article, setarticle] = useState({link:'', title:'', thumbnail:'', sapo:'', source:'', category:'', status: '', time :'' })
         //const [articles, setarticles] = useState([])
         const {id} = useParams();
         const onInputChange = event => {
@@ -53,6 +53,13 @@ const Article  = () => {
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" name='category' onChange={onInputChange} value={article.category}/>
                 <label for="floatingInput">Category</label>
+            </div>
+            <div class="form-floating mb-3">
+            <select class="custom-select custom-select-lg mb-3 form-control" name='status' onChange={onInputChange}  >  
+                    <option value ='Hien' selected>Hiện</option>                              
+                    <option value='An'>Ẩn</option>  
+            </select>
+            <label for="floatingInput">Trạng thái</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" name='time' onChange={onInputChange} value={article.release_time}/>

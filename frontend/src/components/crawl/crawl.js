@@ -46,13 +46,14 @@ const Crawl = () => {
             </div>
             <div class="form-floating mb-3">
             <select class="custom-select custom-select-lg mb-3 form-control" name='status' onChange={onInputChange} >  
-                    <option value = 'Hien' selected>Hiện</option>                              
+                    <option selected>Chọn trạng thái</option>
+                    <option value = 'Hien'>Hiện</option>                              
                     <option value='An'>Ẩn</option>  
             </select>
             <label for="floatingInput">Trạng thái</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name='time' onChange={onInputChange} value={day}/>
+                <input type="text" class="form-control" id="floatingInput" name='time' onChange={onInputChange} value = {day} />
                 <label for="floatingInput">Time</label>
             </div>
             <button class="btn btn-primary" onClick={Add} >Crawl</button>
