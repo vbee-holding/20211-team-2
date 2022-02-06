@@ -14,25 +14,27 @@ export default function Home() {
 
         try {
             const getArticlesList = async () => {
-                const response = await fetch(API_URL + '/api/articles/getListArticles/5', {
+                const response = await fetch(API_URL + '/api/articles/getListArticles', {
                     method: 'GET',
                     headers: {
-                        Accept: 'application/json',
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         Authorization: undefined,
                     },
                 });
                 const json = await response.json();
                 setArticlesList(json.data);
+                console.log(articlesList)
             }
-            getArticlesList()
+            getArticlesList();
+
         } catch (e) {
             console.log(e)
         }
 
         try {
             const getThoiSuList = async () => {
-                const response = await fetch(API_URL + '/api/articles/getListArticles/thoi-su', {
+                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/thoi-su', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -50,7 +52,7 @@ export default function Home() {
 
         try {
             const getKinhTeList = async () => {
-                const response = await fetch(API_URL + '/api/articles/getListArticles/kinh-te', {
+                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/kinh-te', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -68,7 +70,7 @@ export default function Home() {
 
         try {
             const getTheThaoList = async () => {
-                const response = await fetch(API_URL + '/api/articles/getListArticles/the-thao', {
+                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/the-thao', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -86,7 +88,7 @@ export default function Home() {
 
         try {
             const getGiaiTriList = async () => {
-                const response = await fetch(API_URL + '/api/articles/getListArticles/giai-tri', {
+                const response = await fetch(API_URL + '/api/article/getArticlesByCategory/giai-tri', {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -107,7 +109,7 @@ export default function Home() {
         <div className="content">
             <div>
                 <div className="align">
-                    <div className="l-content">
+                    {articlesList[0] && <div className="l-content">
                         <div className="zone-heading">
                             Tin tức mới nhất
                         </div>
@@ -132,6 +134,7 @@ export default function Home() {
                             </article>
                         </div>
                         <div className="feature">
+
                             <article className="story story-primary">
                                 <a className="story-thumb" href={articlesList[1].link}>
                                     <img src={articlesList[1].thumbnail} alt=""/>
@@ -203,7 +206,7 @@ export default function Home() {
                                         1 giờ
                                     </span>
                                 </div>
-                            </article>
+                            </article> 
                         </div>
                         <div className="zone-heading">
                             Tin tức theo chủ đề
@@ -215,7 +218,7 @@ export default function Home() {
 
 
 
-                    </div>
+                    </div> }
                 </div>
             </div>
         </div>
