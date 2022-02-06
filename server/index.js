@@ -2,8 +2,16 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 const {PORT, HOST, MONGO_URI} = require("./constants/constants");
 const mainRouter = require('./routes');
+
+const app = express();
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({limit:'1mb'}))
+app.use(cors());
 
 // connect to mongodb
 mongoose.connect(MONGO_URI, {
@@ -16,11 +24,6 @@ mongoose.connect(MONGO_URI, {
     .catch(err => {
         console.log(err);
     })
-
-const app = express();
-
-app.use(express.json());
-app.use(cors());
 
 app.use(mainRouter);
 app.use('/uploads', express.static('uploads'));
