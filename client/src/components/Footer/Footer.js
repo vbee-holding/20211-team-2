@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer>
       <div id="bottom-bar">
-        <div class="align">
+        <div className="align">
           <div>
             <a href="/" className="logo-bottom"></a>
           </div>
@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
       </div>
       <div id="reference">
-        <div class="align">
+        <div className="align">
           <div className="left-ref">
             <ul>
               <h4>Liên hệ</h4>
