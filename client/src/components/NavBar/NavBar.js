@@ -4,7 +4,7 @@ import './NavBar.css';
 export default function NavBar() {
 
     return (
-        <div className="navbar">
+        <div className="navbar-user">
             <div className="navbar-navbar">
                 <div className="align">
                     <nav>
