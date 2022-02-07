@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { useLocation } from 'react-router-dom'
 
 // Components
 import Header from './components/Header/Header';
@@ -7,13 +8,20 @@ import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Search from './components/Search/Search';
+import Admin from './components/Admin'
 
 // Routes
 import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
 
-function App() {
-  return (
-    <Router>
+const MergeRoute = () => {
+  if (useLocation().pathname.includes("/admin")) {
+    return (
+      <Routes>
+        <Route path="/admin/*" element={<Admin/>} />
+      </Routes>
+    );
+  } else {
+    return (
       <div id="app-container">
         <Header />
         <NavBar />
@@ -24,6 +32,14 @@ function App() {
         </Routes>
         <Footer />
       </div>
+    );
+  }
+}
+
+function App() {
+  return (
+    <Router>
+      <MergeRoute />
     </Router>
   );
 }

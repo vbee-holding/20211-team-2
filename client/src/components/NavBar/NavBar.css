@@ -1,4 +1,4 @@
-.navbar > div {
+.navbar-user > div {
     padding: 0 25px;
     border-bottom: 1px solid lightgray;
     background-color: #2fa1b3;
@@ -39,11 +39,15 @@ nav > ul:first-child {
     border-left: 1px solid hsla(0, 0%, 100%, .2);
 }
 
-a {
+.navbar-user a {
     text-decoration: none;
     cursor: pointer;
     color: inherit;
     font-style: normal;
     font-stretch: normal;
     letter-spacing: normal;
+}
+
+.navbar-user a:hover {
+    color: inherit
 }

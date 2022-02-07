@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Footer.css";
 
 export default function Footer() {
+
+  const [inputValue, setInputValue] = useState('')
+
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    // 'keypress' event misbehaves on mobile so we track 'Enter' key via 'keydown' event
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      onSubmit();
+    }
+  }
+
+  const onSubmit = () => window.location.href="/tim-kiem/"+inputValue;
+  
   return (
     <footer>
       <div id="bottom-bar">
@@ -15,8 +29,16 @@ export default function Footer() {
                 type="text"
                 placeholder="Nhập nội dung tìm kiếm"
                 className="search-input"
+                value={inputValue}
+                onKeyDown={onKeyDown}
+                onInput={e => setInputValue(e.target.value)}
               />
-              <input type="button" value="Tìm kiếm" className="search-button" />
+              <input 
+                type="button" 
+                value="Tìm kiếm" 
+                className="search-button" 
+                onClick={onSubmit}
+              />
             </form>
           </div>
         </div>

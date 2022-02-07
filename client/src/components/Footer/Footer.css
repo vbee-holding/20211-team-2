@@ -32,7 +32,8 @@ footer > div {
 #reference .align {
     display: flex;
     justify-content: space-between;
-    font-family: monospace;
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
 
 .left-ref {
@@ -48,6 +49,15 @@ footer > div {
 
 .left-ref ul li {
     display: block;
+}
+
+.left-ref ul li a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
 }
 
 #reference h4 {
