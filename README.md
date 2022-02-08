@@ -19,5 +19,5 @@ Truy cập Database:
 - ->npm install
 - ->npm start
 
-WBS:
-- https://docs.google.com/spreadsheets/d/1SjOU_Ma5nUfaPMYreBZ_Tde5r9HXU-CvY6TUFw397U8/edit?fbclid=IwAR07HC88iC1aptxpXSCCXkpgCQIrRYk9h3ooCmGeX5XD_SVriwnp3km_eOA#gid=1014682985
+Slide: 
+- https://husteduvn-my.sharepoint.com/:p:/g/personal/anh_pd183481_sis_hust_edu_vn/EY65uVw1u4tKjrHL1CojlSgBduJP_qYo-MG88EEvPYx7-A?e=dc5VKm
