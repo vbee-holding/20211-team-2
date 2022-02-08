@@ -21,6 +21,10 @@ nav > ul > li:hover{
     background-color: #247a88;
 }
 
+nav > ul > li .active {
+    background-color: #247a88;
+}
+
 :focus {
     outline: none;
 }
