@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Search.css';
 import { API_URL } from "../../config/Constants";
 import { useParams } from 'react-router-dom';
+import SubNews from "../News/SubNews";
+import TopTitle from "../News/TopTitle";
 
 export default function Search(props) {
     
@@ -33,40 +35,12 @@ export default function Search(props) {
     }, []);
 
     return (
-        <div className="content">
+        <div className="ml-[140px] mr-[140px] mt-4 mb-4">
             <div>
                 <div className="align">
-                    <div className="zone-heading">
-                        Kết quả tìm kiếm cho từ khóa "{query}"
-                    </div>
+                    <TopTitle title={`Kết quả tìm kiếm cho từ khóa "${query}"`} />
                     <div className="timeline">
-                        {articlesList.map((item, idx) => {
-                            if (idx < 50) {
-                                return (
-                                    <article key={idx} className="story">
-                                        <a className="story-thumb" href={item.link}>
-                                            <img src={item.thumbnail} alt=""/>
-                                        </a>
-                                        <h2>
-                                            <a className="story-title" href={articlesList[0].link}>
-                                                {item.title}
-                                            </a>
-                                        </h2>
-                                        <p className="story-sapo">
-                                            {item.sapo}
-                                        </p>
-                                        <div className="meta">
-                                            <span className="story-logo">
-                                                {item.source}
-                                            </span>
-                                            <span className="story-time">
-                                                {item.release_time}
-                                            </span>
-                                        </div>
-                                    </article>
-                                )
-                            }
-                        })}
+                        {articlesList[0] &&  articlesList.map((article, idx) => <SubNews data={article} />)}
                     </div>
                 </div>
             </div>
