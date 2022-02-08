@@ -40,7 +40,7 @@
 .align {
   margin: 0 auto;
   position: relative;
-  width: 82%;
+  width: 85%;
 }
 
 .admin-logo-top {
@@ -48,3 +48,11 @@
   width: 1cm;
 }
 
+div a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
