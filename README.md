@@ -8,7 +8,12 @@ Truy cập Database:
 - Ấn browse collection để mở database (collection giống kiểu table trong SQL server)
 
 Để chạy server:
-- chỉnh sửa file .env (HOST thành địa chỉ IP LAN)
+- Tạo file .env có nội dung như sau:
+  ```
+  MONGO_URI=mongodb+srv://project:20211@cluster0.bdcg1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+  HOST=<Địa chỉ IP máy của bạn>
+  PORT=5000
+  ```
 - Chạy server bằng lệnh:
 - ->cd server
 - ->npm install
