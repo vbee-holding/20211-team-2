@@ -21,4 +21,3 @@ Truy cập Database:
 
 Slide: 
 - https://husteduvn-my.sharepoint.com/:p:/g/personal/anh_pd183481_sis_hust_edu_vn/EY65uVw1u4tKjrHL1CojlSgBduJP_qYo-MG88EEvPYx7-A?e=dc5VKm
-- https://docs.google.com/presentation/d/12sI-nzgyx_w2p6XoS_M5uspvwLvqFrUA0iWMEc6_EnI/edit?usp=sharing
