@@ -15,6 +15,7 @@ Truy cập Database:
 - ->npm start
 
 Để chạy client:
+- chỉnh sửa file config\Constant.js (đổi IP thành IP của máy hoặc thành localhost)
 - ->cd to client
 - ->npm install
 - ->npm start
